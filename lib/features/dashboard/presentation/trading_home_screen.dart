@@ -15,7 +15,7 @@ class _TradingHomeScreenState extends State<TradingHomeScreen> {
   final _repository = DashboardRepository();
   late Future<DashboardSnapshot> _dashboardFuture;
 
-  final _capitalController = TextEditingController(text: '100000');
+  final _capitalController = TextEditingController(text: '1000');
   final _dailyLossController = TextEditingController(text: '300');
   final _riskController = TextEditingController(text: '100');
   final _clientCodeController = TextEditingController();
@@ -43,7 +43,7 @@ class _TradingHomeScreenState extends State<TradingHomeScreen> {
 
   Future<void> _saveRisk() async {
     await _repository.updateRisk({
-      'capital': double.tryParse(_capitalController.text) ?? 100000,
+      'capital': double.tryParse(_capitalController.text) ?? 1000,
       'daily_loss_limit': double.tryParse(_dailyLossController.text) ?? 300,
       'risk_per_trade': double.tryParse(_riskController.text) ?? 100,
       'max_open_positions': 3,

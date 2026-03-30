@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
@@ -9,6 +10,7 @@ class ApiClient {
 
   Future<Map<String, dynamic>> getJson(String path) async {
     final response = await http.get(Uri.parse('${AppConfig.backendBaseUrl}$path'));
+    log("GET URL ${AppConfig.backendBaseUrl}$path   RES CODE  ${response.statusCode}    ${response.body}");
     return _decode(response);
   }
 
@@ -21,6 +23,8 @@ class ApiClient {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(payload),
     );
+
+    log("POST URL ${AppConfig.backendBaseUrl}$path   RES CODE  ${response.statusCode}    ${response.body}");
     return _decode(response);
   }
 
